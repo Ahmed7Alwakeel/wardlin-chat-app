@@ -11,8 +11,16 @@ const chatMessagesSlice = createSlice({
             //object with id key
             state.messages.push(action.payload)
         },
+        clearChat: (state, action) => {
+            //action is a obj created by redux
+            //payload prop to transport any extra data we might attach to function
+            //object with id key
+            state.messages = []
+        }
+
     }
 })
 
 export const addToChat = chatMessagesSlice.actions.addToChat
+export const clearChat = chatMessagesSlice.actions.clearChat
 export default chatMessagesSlice.reducer

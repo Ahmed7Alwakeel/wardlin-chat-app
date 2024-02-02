@@ -9,7 +9,9 @@ const ChatRoom = () => {
             <div className="chat-room">
                 <div className="message-container">
                     {messages?.map((msg, index) => (
-                        <p className={"message"} key={index}>{msg}</p>
+                        <div className="message-wrapper" key={index}>
+                            <p className={"message"} key={index}>{msg}</p>
+                        </div>
                     ))}
                 </div>
                 <ChatForm />

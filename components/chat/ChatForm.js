@@ -1,16 +1,21 @@
 
-import { addToChat } from "@/store/redux/chatMessages";
-import {  useState } from "react";
+import { addToChat, clearChat } from "@/store/redux/chatMessages";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ChatForm = () => {
     const [message, setMessage] = useState("")
+    const messages = useSelector(store => store.chatMessages.messages)
     const dispatch = useDispatch()
     const sendMessage = () => {
         if (message != "") {
             dispatch(addToChat(message))
             setMessage("")
         }
+    }
+    const clearChatFun = () => {
+        dispatch(clearChat())
     }
 
     return (
@@ -21,7 +26,11 @@ const ChatForm = () => {
                 placeholder="Type your message"
                 type="text"
             />
-            <button type="submit" onClick={sendMessage}>Send</button>
+            <div className="buttons-group">
+                <button type="submit" onClick={sendMessage}>Send</button>
+                {messages?.length > 0 && <button className="clear" onClick={clearChatFun}>Clear</button>}
+            </div>
+
         </div>
     );
 }

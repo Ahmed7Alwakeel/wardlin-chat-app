@@ -1,4 +1,5 @@
 
+import { clearChat } from "@/store/redux/chatMessages";
 import { logUserOut } from "@/store/redux/loginState";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,7 @@ const Navbar = () => {
     const handleAuth = () => {
         if (isLoggedIn) {
             dispatch(logUserOut())
+            dispatch(clearChat())
             localStorage.removeItem('chat')
             router.push('/')
         } else {
@@ -20,7 +22,7 @@ const Navbar = () => {
                 router?.asPath == ('/auth/login') ?
                     router.push('/auth/signup') :
                     router.push('/auth/login')
-            }else{
+            } else {
                 router.push('/auth/login')
             }
         }
