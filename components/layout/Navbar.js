@@ -30,7 +30,7 @@ const Navbar = () => {
             </div>
             <div className="links">
                 <Link className={`link ${router.asPath == '/' ? 'active' : ""}`} passHref href={"/"}>Home</Link>
-                <Link className={`link ${router.asPath == '/chat' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chat" : "/auth/login"}>Chat room</Link>
+                <Link onClick={()=>localStorage.setItem('chat', true)} className={`link ${router.asPath == '/chat' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chat" : "/auth/login"}>Chat room</Link>
             </div>
             <div className="login-icons" onClick={() => handleAuth()}>
                 <Image
