@@ -4,17 +4,11 @@ const chatMessagesSlice = createSlice({
     initialState: {
         messages: []
     },
-    reducers: { //function use to change state
+    reducers: {
         addToChat: (state, action) => {
-            //action is a obj created by redux
-            //payload prop to transport any extra data we might attach to function
-            //object with id key
             state.messages.push(action.payload)
         },
         clearChat: (state, action) => {
-            //action is a obj created by redux
-            //payload prop to transport any extra data we might attach to function
-            //object with id key
             state.messages = []
         }
 
