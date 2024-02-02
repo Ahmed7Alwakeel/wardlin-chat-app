@@ -44,7 +44,7 @@ const AuthForm = ({ children, signup }) => {
                             dispatch(logUserIn(values))
                                 .then(() => {
                                     if (localStorage?.getItem('chat')) {
-                                        router.push('/chat')
+                                        router.push('/chatroom')
                                         localStorage.removeItem('chat')
                                     } else {
                                         router.push("/")

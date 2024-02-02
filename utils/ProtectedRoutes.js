@@ -10,7 +10,7 @@ const ProtectedRoutes = (Component) => {
         useEffect(() => {
             if (router.asPath.includes('auth')) {
                 if (isLoggedIn) {
-                    router.push('/');
+                    router.push('/')
                 }
             } else {
                 if (!isLoggedIn) {
@@ -22,7 +22,7 @@ const ProtectedRoutes = (Component) => {
         if (router.asPath.includes('auth')) {
             return isLoggedIn ? null : <Component {...props} />
         } else {
-            return isLoggedIn ? null : <Component {...props} />
+            return isLoggedIn ? <Component {...props} /> : null
         }
     }
     return Wrapper;

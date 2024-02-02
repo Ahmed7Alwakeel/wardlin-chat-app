@@ -39,7 +39,7 @@ const Navbar = () => {
                 {!router?.asPath.includes("auth") &&
                     <>
                         <Link className={`link ${router.asPath == '/' ? 'active' : ""}`} passHref href={"/"}>Home</Link>
-                        <Link onClick={() => localStorage.setItem('chat', true)} className={`link ${router.asPath == '/chat' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chat" : "/auth/login"}>Chat room</Link>
+                        <Link onClick={() => localStorage.setItem('chat', true)} className={`link ${router.asPath == '/chatroom' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chatroom" : "/auth/login"}>Chat room</Link>
                     </>
                 }
 
