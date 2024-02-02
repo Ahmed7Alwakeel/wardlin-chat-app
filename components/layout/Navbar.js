@@ -5,17 +5,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+
 const Navbar = () => {
     const router = useRouter()
     const isLoggedIn = useSelector(store => store.loginState.isLoggedIn)
     const dispatch = useDispatch()
-
     const handleAuth = () => {
         if (isLoggedIn) {
             dispatch(logUserOut())
+            localStorage.removeItem('chat')
             router.push('/')
         } else {
-            router.push('/auth/login')
+            if (router?.asPath.includes('auth')) {
+                router?.asPath == ('/auth/login') ?
+                    router.push('/auth/signup') :
+                    router.push('/auth/login')
+            }else{
+                router.push('/auth/login')
+            }
         }
     }
     return (
@@ -29,8 +36,13 @@ const Navbar = () => {
                 />
             </div>
             <div className="links">
-                <Link className={`link ${router.asPath == '/' ? 'active' : ""}`} passHref href={"/"}>Home</Link>
-                <Link onClick={()=>localStorage.setItem('chat', true)} className={`link ${router.asPath == '/chat' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chat" : "/auth/login"}>Chat room</Link>
+                {!router?.asPath.includes("auth") &&
+                    <>
+                        <Link className={`link ${router.asPath == '/' ? 'active' : ""}`} passHref href={"/"}>Home</Link>
+                        <Link onClick={() => localStorage.setItem('chat', true)} className={`link ${router.asPath == '/chat' ? 'active' : ""}`} passHref href={isLoggedIn ? "/chat" : "/auth/login"}>Chat room</Link>
+                    </>
+                }
+
             </div>
             <div className="login-icons" onClick={() => handleAuth()}>
                 <Image

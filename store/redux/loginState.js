@@ -8,7 +8,7 @@ const loginSlice = createSlice({
     reducers: {
         logUserIn: (state, action) => {
             state.isLoggedIn = true
-            state.userData = action.payload.data
+            state.userData = action.payload
         },
         logUserOut: (state, action) => {
             state.isLoggedIn = false
