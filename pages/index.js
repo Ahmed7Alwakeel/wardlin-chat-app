@@ -1,12 +1,13 @@
-import { Inter } from "next/font/google";
+import Banner from "@/components/home/Banner";
+import ChatFeatures from "@/components/home/ChatFeatures";
+import JoinUs from "@/components/home/JoinUs";
 
-
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export default function Index() {
   return (
     <>
-    test
+      <Banner />
+      <ChatFeatures />
+      <JoinUs />
     </>
-  );
+  )
 }

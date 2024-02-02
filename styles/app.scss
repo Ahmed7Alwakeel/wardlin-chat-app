@@ -1,4 +1,8 @@
+@import "./variables.scss";
+@import "./components/layout/Navbar.scss";
 @import "./components/home/Banner.scss";
+@import "./components/home/ChatFeatures.scss";
+@import "./components/home/JoinUs.scss";
 @font-face {
 	font-family: "light";
 	src: url("../public/fonts/HyundaiSansHeadOffice-Regular.ttf");

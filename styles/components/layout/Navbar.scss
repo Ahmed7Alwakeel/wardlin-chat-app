@@ -1,0 +1,55 @@
+.navbar-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+
+    .logo-container {
+        cursor: pointer;
+    }
+
+    .links {
+        display: flex;
+        gap: 2rem;
+        color: #fff;
+
+        .link {
+            transition: .25s all;
+            position: relative;
+
+            &::after {
+                position: absolute;
+                content: "";
+                width: 0;
+                height: 2px;
+                left: 0;
+                bottom: -0.5rem;
+                background-color: $blue-color;
+                transition: all ease-in-out 0.3s;
+            }
+
+            &.active {
+                color: $blue-color;
+
+                &::after {
+                    width: 75%;
+                }
+            }
+
+        }
+    }
+
+    .login-icons {
+        cursor: pointer;
+    }
+}
+
+@media (min-width:1024px) {
+    .navbar-container {
+        padding: 2rem 4rem;
+    }
+}

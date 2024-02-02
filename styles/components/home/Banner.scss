@@ -1,0 +1,205 @@
+.banner-swiper {
+	width: 100%;
+	height: 40rem;
+	overflow: hidden;
+	position: relative;
+	.banner-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		transition: all 1s;
+		overflow: hidden;
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+		img {
+			width: 100%;
+			height: 100%;
+			transition: all 0.75s;
+			object-fit: cover;
+		}
+		&.active {
+            img {
+                transform: scale(1.05);
+            }
+			clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+		}
+		&.prev {
+			clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+		}
+	}
+	.swiper-pagination-bullets {
+		position: absolute;
+		width: 100%;
+		display: flex;
+		gap: 0.25rem;
+		align-items: center;
+		justify-content: center;
+		left: 0;
+		z-index: 3;
+		bottom: 4rem;
+		.swiper-pagination-bullet {
+			padding: 1rem 0;
+			border-radius: 0;
+			width: auto;
+			height: auto;
+			background-color: transparent;
+			opacity: 1;
+			div {
+				width: 4rem;
+				height: 3px;
+				border-radius: 0;
+				transition: 0.25s all;
+				background-color: red;
+				background: rgba($color: #fff, $alpha: 0.4);
+				position: relative;
+				&.sliderDir {
+					&::after {
+						left: unset;
+						right: 0;
+					}
+				}
+				&::after {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 0;
+					height: 100%;
+					transition: 0;
+					z-index: 1;
+					background: #fff;
+				}
+			}
+			&.active {
+				div {
+					&::after {
+						transition: 4s ease-in;
+						width: 100%;
+					}
+					&.firstLoad {
+						&::after {
+							animation: drawLine 4s ease-in;
+						}
+					}
+				}
+			}
+		}
+	}
+	.overlay {
+		position: absolute;
+        top: 0;
+        left: 0;
+		width: 100%;
+		height:100%;
+		z-index: 1;
+		background-color: rgba($color: #000000, $alpha: 0.65);
+	}
+	.banner-data {
+		position: absolute;
+		z-index: 2;
+		left: 2rem;
+		top: 0;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: #fff;
+		p {
+			width: 90%;
+			margin: 1.5rem 0;
+		}
+		h1 {
+			font-size: 2.75rem;
+		}
+        .link{
+            display: flex;
+            align-items: center;
+            gap: .25rem;
+            margin-top: 1.5rem;
+            transition: .25s all;
+            svg{
+                transition: .25s all;
+            }
+            &:hover{
+                color: $blue-color;
+                svg{
+                    path{
+                        fill:$blue-color;
+                    }
+                }
+            }
+        }
+	}
+	.scroll-down {
+		display: none;
+		position: absolute;
+		z-index: 3;
+		color: #fff;
+		right: 2rem;
+		bottom: 2rem;
+		cursor: pointer;
+		align-items: center;
+		gap: 0.5rem;
+		.scroll-line {
+			width: 2px;
+			height: 3rem;
+			background-color: rgba($color: #fff, $alpha: 0.3);
+			position: relative;
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				width: 100%;
+				background-color: #fff;
+				animation: drawLine2 1s infinite alternate;
+			}
+		}
+	}
+}
+@media (min-width: 1024px) {
+	.banner-swiper {
+		height: 100vh;
+		padding: 1.5rem;
+		.banner-data {
+			left: 4rem;
+			margin-top: 5rem;
+			width: 50%;
+			p {
+				width: 90%;
+			}
+		}
+		.swiper-pagination-bullets {
+			gap: 1rem;
+			bottom: 3rem;
+			.swiper-pagination-bullet {
+				div {
+					width: 10rem;
+				}
+			}
+		}
+		.scroll-down {
+			right: 3.667rem;
+			bottom: 4rem;
+			display: flex;
+		}
+	}
+}
+@keyframes drawLine {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+@keyframes drawLine2 {
+	0% {
+		height: 0%;
+	}
+	100% {
+		height: 100%;
+	}
+}
