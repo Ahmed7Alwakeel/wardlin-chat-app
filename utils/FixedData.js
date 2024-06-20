@@ -1,7 +1,7 @@
 export const bannerData = {
     header: "WardLin Chat",
     description: `
-    WardLin Chat is digital platform that enables users to engage in real-time conversations through text, multimedia, or voice messages. It serves as a convenient and instantaneous communication tool, allowing individuals or groups to connect with each other, share information, and express ideas.`,
+    WardLin Chat is a digital platform that enables users to engage in real-time conversations through text, multimedia, or voice messages. It serves as a convenient and instantaneous communication tool, allowing individuals or groups to connect with each other, share information, and express ideas.`,
     buttonText: "Let's chat",
     images: [
         '/images/b1.jpg',
